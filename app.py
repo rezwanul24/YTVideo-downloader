@@ -44,5 +44,5 @@ def download_video():
         return f"Error: {str(e)}"
 
 if __name__ == "__main__":
- port = int(os.environ.get("PORT", 5000))  # Render-এর জন্য PORT সেট করা
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT", 5000))  # Fix PORT issue
+    app.run(host="0.0.0.0", port=port)  # Ensure no extra spaces here
