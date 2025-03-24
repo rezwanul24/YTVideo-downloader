@@ -9,6 +9,9 @@ DOWNLOAD_FOLDER = 'downloads'
 if not os.path.exists(DOWNLOAD_FOLDER):
     os.makedirs(DOWNLOAD_FOLDER)
 
+# Path to your cookies.txt file
+COOKIES_PATH = 'cookies.txt'  # Update this with your actual path to cookies.txt file
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -17,10 +20,11 @@ def index():
 def download_video():
     video_url = request.form['url']
 
-    # yt-dlp options
+    # yt-dlp options including cookies
     ydl_opts = {
         'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(title)s.%(ext)s'),
         'quiet': True,  # Make yt-dlp quieter
+        'cookies': COOKIES_PATH  # Path to the cookies.txt file
     }
 
     try:
